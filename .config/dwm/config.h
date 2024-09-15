@@ -36,8 +36,15 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
+	{ "Steam",   NULL,        NULL,     4,            1,1,            0 },
+	{ "Steam",    NULL,    "Steam",	      4,            0,0,            0 },
+  { "steam",    "steamwebhelper",    "Friends List",           4,           0, 0,            0 },
+	{ "steam",    "steamwebhelper",    "Steam",	      4,           0, 0,            0 },
+	{ "Sonixd", "sonixd", NULL,        1<<4,          0,  0, 			  -1},
+	{ "net-runelite-launcher-Launcher", "net-runelite-launcher-Launcher", NULL, 0, 1,1, -1},
+	{ "net-runelite-client-RuneLite", "net-runelite-client-RuneLite", "RuneLite", 0, 1,0, -1},
+  { "ggnet.exe", NULL,      NULL,       0,            0,           1,              0},
 };
-
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
@@ -61,8 +68,6 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-#define STATUSBAR "dwmblocks"
-/* appearance */
 
 #define STATUSBAR "dwmblocks"
 

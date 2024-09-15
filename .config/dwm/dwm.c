@@ -333,7 +333,7 @@ applyrules(Client *c)
 	class    = ch.res_class ? ch.res_class : broken;
 	instance = ch.res_name  ? ch.res_name  : broken;
 
-	if (strstr(class, "Steam") || strstr(class, "steam_app_"))
+	if (strstr(class, "Steam") || strstr(class, "steam_app_") || strstr(class, "ggnet.exe"))
 		c->issteam = 1;
 
 	for (i = 0; i < LENGTH(rules); i++) {

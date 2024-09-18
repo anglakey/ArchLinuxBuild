@@ -12,7 +12,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "twemoji:pixelsize=14:antialias=true:autohint=true","JoyPixels:pixelsize=14:antialias=true:autohint=true" "ttf-weather-icons:pixelsize=14:antialias=true:autohint=true" };
+static const char *fonts[]          = { "monospace:size=10","NotoColorEmoji:pixelsize=10:antialias=true:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -44,6 +44,8 @@ static const Rule rules[] = {
 	{ "net-runelite-launcher-Launcher", "net-runelite-launcher-Launcher", NULL, 0, 1,1, -1},
 	{ "net-runelite-client-RuneLite", "net-runelite-client-RuneLite", "RuneLite", 0, 1,0, -1},
   { "ggnet.exe", NULL,      NULL,       0,            0,           1,              0},
+  { "steam_app_default", NULL, NULL,    0,            0,           1,             0 },
+  { "galculator", NULL, NULL, 0, 1, 1, 0},
 };
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
@@ -85,8 +87,9 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "@DEFAULT_SI
 static const char *nextsong[]     = { "/usr/bin/playerctl", "--player=mpv,spotify,cider,youtube-music,Sonixd", "next", NULL};
 static const char *presong[] = { "/usr/bin/playerctl","--player=mpv,spotify,cider,youtube-music,Sonixd", "previous", NULL};
 static const char *playpause[]    = { "/usr/bin/playerctl", "--player=mpv,spotify,cider,youtube-music,Sonixd", "play-pause", NULL};
-/* Screenshoting using Gyazo */
-static const char *screenshot[] = { "/usr/bin/gyazo"};
+/* Misc utils */
+static const char *screenshot[] = { "/usr/bin/flameshot", "gui"};
+static const char *calculator[] = { "/usr/bin/galculator"};
 /* Brightness */
 static const char *brupcmd[] = { "brightnessctl", "set", "10%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "set", "10%-", NULL };
@@ -97,7 +100,7 @@ static const char *lockscreen[] = { "betterlockscreen", "-l", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = roficmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = alaccmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -113,6 +116,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+  { MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -139,12 +143,13 @@ static const Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 	{ MODKEY,		        		XF86XK_AudioRaiseVolume, spawn, {.v = nextsong } },
 	{ MODKEY,		        		XF86XK_AudioLowerVolume, spawn, {.v = presong} },
-	/*				Screenshot Gyazo Support 		*/
-	{ MODKEY,						XK_g,	   spawn,	       {.v = screenshot } },
-	/*              Brightness              */
+	/*Misc Keybinds*/
+	{ MODKEY,					          	XK_g,	      spawn,	       {.v = screenshot } },
+	{ MODKEY,					          	XK_a,	      spawn, 	       {.v = calculator } },
+	/*Brightness*/
     { 0, 							XF86XK_MonBrightnessUp,  spawn,          {.v = brupcmd} },
     { 0, 							XF86XK_MonBrightnessDown, spawn,          {.v = brdowncmd} },
-	/*				Lockscreen		*/
+	/*Lockscreen*/
 	{ MODKEY|ShiftMask,		XK_l,	spawn,		 			  {.v = lockscreen} },
 };
 

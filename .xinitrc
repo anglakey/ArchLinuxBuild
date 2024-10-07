@@ -10,7 +10,6 @@ numlockx &
 dwmblocks &
 picom &
 blueberry-tray &
-ckb-next -b &
-xrdb ~/.Xresources
+xrdb ~/.Xresources &
 /usr/lib/polkit-kde-authentication-agent-1 &
 exec dwm

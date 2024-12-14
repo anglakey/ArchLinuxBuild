@@ -17,7 +17,7 @@ NC='\033[0m' # No Color
 DOTFILES_REPO="https://github.com/anglakey/ArchLinuxBuild"
 
 # Programs to pre-install via paru
-PRE_INSTALL_PROGRAMS=("fenshi" "nvchad" "jellyfin-media-player" "vulkan-radeon" "lib32-vulkan-radeon" "steam")
+PRE_INSTALL_PROGRAMS=("fenshin-bin" "bolt-launcher" "brave-bin" "blueberry" "filezilla" "file-roller" "flameshot" "feh" "neofetch" "noto-fonts-cjk" "noto-fonts-emoji" "noto-fonts" "obsidian" "pipewire-pulse" "pipewire-alsa" "picom" "polkit-kde-agent" "protonvpn-cli-community" "qflipper-bin" "rofi" "telegram-desktop" "wine" "winetricks" "dunst" "mpv" "nvchad" "jellyfin-media-player" "vulkan-radeon" "lib32-vulkan-radeon" "steam")
 
 # ------------- Functions -------------
 
